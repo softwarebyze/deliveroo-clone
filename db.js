@@ -157,6 +157,38 @@ export const db = {
       lat: 23.245,
     },
   ],
+  categories: [
+    {
+      id: 1,
+      image_url:
+        "https://images.unsplash.com/photo-1594968973184-9040a5a79963?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+      title: "Offers",
+    },
+    {
+      id: 2,
+      image_url:
+        "https://images.unsplash.com/photo-1594007654729-407eedc4be65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=428&q=80",
+      title: "Pizza",
+    },
+    {
+      id: 3,
+      image_url:
+        "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+      title: "Thai",
+    },
+    {
+      id: 4,
+      image_url:
+        "https://images.unsplash.com/photo-1615361200141-f45040f367be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80",
+      title: "Sushi",
+    },
+    {
+      id: 5,
+      image_url:
+        "https://images.unsplash.com/photo-1503764654157-72d979d9af2f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=874&q=80",
+      title: "Asian",
+    },
+  ],
   getRestaurantsByFeatureId: (id) => {
     return db.restaurants.filter((restaurant) => restaurant.featured_id === id);
   },
