@@ -11,13 +11,18 @@ NativeWindStyleSheet.setOutput({
 
 const Stack = createNativeStackNavigator();
 
+import { Provider } from "react-redux";
+import { store } from "./store";
+
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Restaurant" component={RestaurantScreen} />
-      </Stack.Navigator>
+      <Provider store={store}>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Restaurant" component={RestaurantScreen} />
+        </Stack.Navigator>
+      </Provider>
     </NavigationContainer>
   );
 }
