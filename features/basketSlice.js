@@ -36,18 +36,19 @@ export const { addToBasket, removeFromBasket } = basketSlice.actions;
 const selectBasket = (state) => state.basket;
 
 export const selectBasketItems = createSelector(
-  selectBasket,
+  [selectBasket],
   (basket) => basket.items
 );
 
 export const selectBasketItemsWithId = createSelector(
-  selectBasketItems,
-  (items, id) => items.filter(item => item.id === id)
-)
+  [selectBasketItems, (_state, id) =>id],
+  (items, id) => {
+    return items.filter((item) => item.id === id);
+  }
+);
 
-export const selectBasketTotal = createSelector(
-  selectBasketItems,
-  items => items.reduce((total, item) => total + item.price, 0).toFixed(2)
-)
+export const selectBasketTotal = createSelector([selectBasketItems], (items) =>
+  items.reduce((total, item) => total + item.price, 0)
+);
 
 export default basketSlice.reducer;

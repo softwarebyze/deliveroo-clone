@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Currency from "react-currency-formatter";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import {
   MinusCircleIcon,
@@ -10,7 +11,6 @@ import {
   removeFromBasket,
   selectBasketItemsWithId,
 } from "../features/basketSlice";
-import Currency from 'react-currency-formatter';
 
 const DishRow = ({ id, name, description, price, image_url }) => {
   const [isPressed, setIsPressed] = useState(false);
