@@ -10,7 +10,7 @@ import {
   removeFromBasket,
   selectBasketItemsWithId,
 } from "../features/basketSlice";
-import Currency from "./Currency";
+import Currency from 'react-currency-formatter';
 
 const DishRow = ({ id, name, description, price, image_url }) => {
   const [isPressed, setIsPressed] = useState(false);

@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { XCircleIcon } from "react-native-heroicons/outline";
 import { useDispatch, useSelector } from "react-redux";
-import Currency from "../components/Currency";
+import Currency from 'react-currency-formatter';
 import {
   removeFromBasket,
   selectBasketItems,
@@ -112,7 +112,7 @@ const BasketScreen = () => {
           <View className="flex-row justify-between">
             <Text>Order Total</Text>
             <Text className="font-extrabold">
-              <Currency quantity={basketTotal + 5.99} />
+              <Currency quantity={+basketTotal + 5.99} />
             </Text>
           </View>
 
