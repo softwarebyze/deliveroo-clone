@@ -1,5 +1,5 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
-import React, { useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import {
   ArrowLeftIcon,
@@ -8,11 +8,15 @@ import {
   QuestionMarkCircleIcon,
   StarIcon,
 } from "react-native-heroicons/outline";
+import { useDispatch } from "react-redux";
 import BasketIcon from "../components/BasketIcon";
 import DishRow from "../components/DishRow";
+import { setRestaurant } from "../features/restaurantSlice";
 
 const RestaurantScreen = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
@@ -33,6 +37,24 @@ const RestaurantScreen = () => {
       lat,
     },
   } = useRoute();
+
+  useEffect(() => {
+    dispatch(
+      setRestaurant({
+        id,
+        image_url,
+        title,
+        rating,
+        genre,
+        address,
+        short_description,
+        dishes,
+        long,
+        lat,
+      })
+    );
+  }, [dispatch]);
+
   return (
     <>
       <BasketIcon />
@@ -81,10 +103,9 @@ const RestaurantScreen = () => {
           </TouchableOpacity>
         </View>
 
-        <View>
+        <View className="pb-36">
           <Text className="px-4 pt-6 mb-3 font-bold text-xl">Menu</Text>
 
-          {/* Dishrows */}
           {dishes.map((dish) => (
             <DishRow key={dish.id} {...dish} />
           ))}
