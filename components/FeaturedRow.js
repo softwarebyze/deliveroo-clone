@@ -1,9 +1,11 @@
-import { View, Text, ScrollView } from "react-native";
 import React from "react";
+import { ScrollView, Text, View } from "react-native";
 import { ArrowRightIcon } from "react-native-heroicons/outline";
+import { db } from "../db";
 import RestaurantCard from "./RestaurantCard";
 
 const FeaturedRow = ({ id, title, description }) => {
+  const restaurants = db.getRestaurantsByFeatureId(id);
   return (
     <View>
       <View className="mt-4 flex-row items-ccenter justify-between px-4">
@@ -18,43 +20,9 @@ const FeaturedRow = ({ id, title, description }) => {
         showsHorizontalScrollIndicator={false}
         className="pt-4"
       >
-        {/* RestaurantCard */}
-        <RestaurantCard
-          id={123}
-          imageUrl="https://links.papareact.com/gn7"
-          title="Yo! Sushi"
-          rating={4.5}
-          genre="Japanese"
-          address="123 Main Street"
-          short_description="Sushi, Japanese, Asian"
-          dishes={[]}
-          long={-73.935242}
-          lat={40.73061}
-        />
-        <RestaurantCard
-          id={123}
-          imageUrl="https://links.papareact.com/gn7"
-          title="Yo! Sushi"
-          rating={4.5}
-          genre="Japanese"
-          address="123 Main Street"
-          short_description="Sushi, Japanese, Asian"
-          dishes={[]}
-          long={-73.935242}
-          lat={40.73061}
-        />
-        <RestaurantCard
-          id={123}
-          imageUrl="https://links.papareact.com/gn7"
-          title="Yo! Sushi"
-          rating={4.5}
-          genre="Japanese"
-          address="123 Main Street"
-          short_description="Sushi, Japanese, Asian"
-          dishes={[]}
-          long={-73.935242}
-          lat={40.73061}
-        />
+        {restaurants.map((restaurant) => (
+          <RestaurantCard key={restaurant.id} {...restaurant} />
+        ))}
       </ScrollView>
     </View>
   );

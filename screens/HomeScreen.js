@@ -16,14 +16,17 @@ import {
 } from "react-native-heroicons/outline";
 import Categories from "../components/Categories";
 import FeaturedRow from "../components/FeaturedRow";
+import { db } from "../db";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
     });
   }, []);
+
   return (
     <SafeAreaView className="bg-white pt-5">
       {/* Header */}
@@ -68,28 +71,9 @@ const HomeScreen = () => {
         <Categories />
 
         {/* Featured Rows */}
-        <FeaturedRow
-          id="1"
-          title="Featured"
-          description="Paid placements from our partners"
-          featuredCategory="Featured"
-        />
-
-        {/* Tasty Discounts */}
-        <FeaturedRow
-          id="2"
-          title="Tasty Discounts"
-          description="Everyone's been enjoying these juicy discounts"
-          featuredCategory="Featured"
-        />
-
-        {/* Offers neear you*/}
-        <FeaturedRow
-          id="3"
-          title="Offers near you"
-          description="Why not support your local restaurant tonight?"
-          featuredCategory="Featured"
-        />
+        {db.features?.map((feature) => (
+          <FeaturedRow key={feature.id} {...feature} />
+        ))}
       </ScrollView>
     </SafeAreaView>
   );
